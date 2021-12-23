@@ -1,3 +1,4 @@
+/** @param {NS} ns **/
 export async function main(ns) {
   const target = ns.args[0]
   const threads = ns.args[1]
@@ -8,6 +9,11 @@ export async function main(ns) {
   }
 
   ns.print(`Starting operation: hack on ${target} in ${threads} threads`)
-  await ns.hack(target, { threads, stock: true })
+  if (ns.hasRootAccess(target)) {
+    await ns.hack(target, { threads, stock: true })
+  }
+  else {
+    await ns.tryWritePort(42, target);
+  }
   ns.exit()
 }
