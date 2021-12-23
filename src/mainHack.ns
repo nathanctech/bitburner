@@ -6,8 +6,8 @@ const settings = {
   minSecurityLevelOffset: 1,
   maxMoneyMultiplayer: 0.9,
   minSecurityWeight: 100,
-  mapRefreshInterval: 24 * 60 * 60 * 1000,
-  maxWeakenTime: 30 * 60 * 1000,
+  mapRefreshInterval: 24 * 60 * 1000,
+  maxWeakenTime: 25 * 60 * 1000,
   keys: {
     serverMap: 'BB_SERVER_MAP',
   },
@@ -147,7 +147,13 @@ function findTargetServer(ns, serversList, servers, serverExtraData) {
 }
 
 export async function main(ns) {
-  ns.tprint('[${ localeHHMMSS() }] Starting mainHack.ns')
+  ns.tprint(`[${ localeHHMMSS() }] Starting mainHack.ns`)
+  
+  if (ns.fileExists('early.txt')) {
+    settings.mapRefreshInterval = 10*1000*60;
+    settings.maxWeakenTime = 5*1000*60;
+    ns.tprint(`[${ localeHHMMSS() }] Adjusting settings for early game.`);
+  }
 
   let hostname = ns.getHostname()
 
