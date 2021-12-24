@@ -15,6 +15,7 @@ const scriptsToKill = [
   'initHacking.ns',
   'start.ns',
   'find.ns',
+  '42.ns'
 ]
 
 function getItem(key) {

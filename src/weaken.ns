@@ -11,7 +11,7 @@ export async function main(ns) {
   if (ns.hasRootAccess(target)) {
     await ns.weaken(target, { threads, stock: true })
   } else {
-    await ns.tryWritePort(42, target);
+    await ns.tryWritePort(1, target);
   }
   ns.exit()
 }

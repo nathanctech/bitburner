@@ -150,7 +150,6 @@ export async function main(ns) {
   ns.tprint(`[${ localeHHMMSS() }] Starting mainHack.ns`)
   
   if (ns.fileExists('early.txt')) {
-    settings.mapRefreshInterval = 10*1000*60;
     settings.maxWeakenTime = 5*1000*60;
     ns.tprint(`[${ localeHHMMSS() }] Adjusting settings for early game.`);
   }

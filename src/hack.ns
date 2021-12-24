@@ -13,7 +13,7 @@ export async function main(ns) {
     await ns.hack(target, { threads, stock: true })
   }
   else {
-    await ns.tryWritePort(42, target);
+    await ns.tryWritePort(1, target);
   }
   ns.exit()
 }
