@@ -8,10 +8,10 @@ export async function main(ns) {
   }
 
   ns.print(`Starting operation: weaken on ${target} in ${threads} threads`)
-  if (ns.hasRootAccess(target)) {
+  try {
     await ns.weaken(target, { threads, stock: true })
-  } else {
-    await ns.tryWritePort(1, target);
+  } catch (e) {
+    ns.tprint(`Failed to weaken ${target}, are we root?`);
   }
   ns.exit()
 }
